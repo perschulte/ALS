@@ -7,19 +7,47 @@
 //
 
 import UIKit
+import AVFoundation
+
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var textField: UITextField!
+    
+    let speechSynthesizer = AVSpeechSynthesizer()
+    
+    @IBAction func speak(sender: UIButton) {
+        
+        let speechUtterance = AVSpeechUtterance(string: textField.text!)
+        speechUtterance.voice = AVSpeechSynthesisVoice()
+        speechSynthesizer.speakUtterance(speechUtterance)
+    }
+    @IBAction func deleteText(sender: UIButton) {
+        textField.text = nil
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+        
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    
+    func keyboardWillShow(notification: NSNotification) {
+        
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+            self.view.frame.origin.y -= keyboardSize.height
+        }
+        
     }
-
-
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+            self.view.frame.origin.y += keyboardSize.height
+        }
+    }
 }
 
