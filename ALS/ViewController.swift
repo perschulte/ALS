@@ -11,7 +11,9 @@ import AVFoundation
 
 
 class ViewController: UIViewController {
+
     
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var textField: UITextField!
     
     let speechSynthesizer = AVSpeechSynthesizer()
@@ -19,7 +21,13 @@ class ViewController: UIViewController {
     @IBAction func speak(sender: UIButton) {
         
         let speechUtterance = AVSpeechUtterance(string: textField.text!)
-        speechUtterance.voice = AVSpeechSynthesisVoice()
+        speechUtterance.voice = AVSpeechSynthesisVoice(language: "de-DE")
+        
+        for voice in AVSpeechSynthesisVoice.speechVoices() {
+            if (voice.language == "de-DE" && voice.name == AVSpeechSynthesisVoiceIdentifierAlex) {
+                speechUtterance.voice = AVSpeechSynthesisVoice(identifier: voice.identifier)
+            }
+        }
         speechSynthesizer.speakUtterance(speechUtterance)
     }
     @IBAction func deleteText(sender: UIButton) {
@@ -28,7 +36,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        textField.becomeFirstResponder()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
@@ -39,14 +47,14 @@ class ViewController: UIViewController {
     func keyboardWillShow(notification: NSNotification) {
         
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-            self.view.frame.origin.y -= keyboardSize.height
+            bottomConstraint.constant = bottomConstraint.constant + keyboardSize.height
         }
         
     }
     
     func keyboardWillHide(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-            self.view.frame.origin.y += keyboardSize.height
+            bottomConstraint.constant = bottomConstraint.constant - keyboardSize.height
         }
     }
 }
