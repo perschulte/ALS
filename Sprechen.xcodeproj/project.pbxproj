@@ -15,7 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		CB823C841CD7FDC6002964FF /* ALS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ALS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB823C841CD7FDC6002964FF /* Sprechen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sprechen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB823C871CD7FDC6002964FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB823C891CD7FDC6002964FF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CB823C8C1CD7FDC6002964FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -46,7 +46,7 @@
 		CB823C851CD7FDC6002964FF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CB823C841CD7FDC6002964FF /* ALS.app */,
+				CB823C841CD7FDC6002964FF /* Sprechen.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -67,9 +67,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CB823C831CD7FDC6002964FF /* ALS */ = {
+		CB823C831CD7FDC6002964FF /* Sprechen */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CB823C961CD7FDC6002964FF /* Build configuration list for PBXNativeTarget "ALS" */;
+			buildConfigurationList = CB823C961CD7FDC6002964FF /* Build configuration list for PBXNativeTarget "Sprechen" */;
 			buildPhases = (
 				CB823C801CD7FDC6002964FF /* Sources */,
 				CB823C811CD7FDC6002964FF /* Frameworks */,
@@ -79,9 +79,9 @@
 			);
 			dependencies = (
 			);
-			name = ALS;
+			name = Sprechen;
 			productName = ALS;
-			productReference = CB823C841CD7FDC6002964FF /* ALS.app */;
+			productReference = CB823C841CD7FDC6002964FF /* Sprechen.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -100,7 +100,7 @@
 					};
 				};
 			};
-			buildConfigurationList = CB823C7F1CD7FDC6002964FF /* Build configuration list for PBXProject "ALS" */;
+			buildConfigurationList = CB823C7F1CD7FDC6002964FF /* Build configuration list for PBXProject "Sprechen" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -113,7 +113,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CB823C831CD7FDC6002964FF /* ALS */,
+				CB823C831CD7FDC6002964FF /* Sprechen */,
 			);
 		};
 /* End PBXProject section */
@@ -257,7 +257,7 @@
 				INFOPLIST_FILE = ALS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.designair.ALS;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Sprechen;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
@@ -271,7 +271,7 @@
 				INFOPLIST_FILE = ALS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.designair.ALS;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Sprechen;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
@@ -279,7 +279,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CB823C7F1CD7FDC6002964FF /* Build configuration list for PBXProject "ALS" */ = {
+		CB823C7F1CD7FDC6002964FF /* Build configuration list for PBXProject "Sprechen" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CB823C941CD7FDC6002964FF /* Debug */,
@@ -288,7 +288,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CB823C961CD7FDC6002964FF /* Build configuration list for PBXNativeTarget "ALS" */ = {
+		CB823C961CD7FDC6002964FF /* Build configuration list for PBXNativeTarget "Sprechen" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CB823C971CD7FDC6002964FF /* Debug */,
