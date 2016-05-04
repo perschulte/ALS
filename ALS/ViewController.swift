@@ -12,15 +12,14 @@ import AVFoundation
 
 class ViewController: UIViewController {
 
-    
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var textView: UITextView!
     
     let speechSynthesizer = AVSpeechSynthesizer()
     
     @IBAction func speak(sender: UIButton) {
         
-        let speechUtterance = AVSpeechUtterance(string: textField.text!)
+        let speechUtterance = AVSpeechUtterance(string: textView.text!)
         speechUtterance.voice = AVSpeechSynthesisVoice(language: "de-DE")
         
         for voice in AVSpeechSynthesisVoice.speechVoices() {
@@ -31,30 +30,29 @@ class ViewController: UIViewController {
         speechSynthesizer.speakUtterance(speechUtterance)
     }
     @IBAction func deleteText(sender: UIButton) {
-        textField.text = nil
+        textView.text = nil
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        textField.becomeFirstResponder()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
         
+        textView.becomeFirstResponder()
     }
-    
     
     func keyboardWillShow(notification: NSNotification) {
         
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-            bottomConstraint.constant = bottomConstraint.constant + keyboardSize.height
+            bottomConstraint.constant = 20 + keyboardSize.height
         }
         
     }
     
     func keyboardWillHide(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-            bottomConstraint.constant = bottomConstraint.constant - keyboardSize.height
+            bottomConstraint.constant = 20 - keyboardSize.height
         }
     }
 }
