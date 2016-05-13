@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB499C241CE4D87C006F9609 /* SpokenSnippet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB499C231CE4D87C006F9609 /* SpokenSnippet.swift */; };
 		CB823C881CD7FDC6002964FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB823C871CD7FDC6002964FF /* AppDelegate.swift */; };
 		CB823C8A1CD7FDC6002964FF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB823C891CD7FDC6002964FF /* ViewController.swift */; };
 		CB823C8D1CD7FDC6002964FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB823C8B1CD7FDC6002964FF /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CB499C231CE4D87C006F9609 /* SpokenSnippet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpokenSnippet.swift; sourceTree = "<group>"; };
 		CB823C841CD7FDC6002964FF /* Sprechen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sprechen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB823C871CD7FDC6002964FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB823C891CD7FDC6002964FF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			children = (
 				CB823C871CD7FDC6002964FF /* AppDelegate.swift */,
 				CB823C891CD7FDC6002964FF /* ViewController.swift */,
+				CB499C231CE4D87C006F9609 /* SpokenSnippet.swift */,
 				CB823C8B1CD7FDC6002964FF /* Main.storyboard */,
 				CB823C8E1CD7FDC6002964FF /* Assets.xcassets */,
 				CB823C901CD7FDC6002964FF /* LaunchScreen.storyboard */,
@@ -138,6 +141,7 @@
 			files = (
 				CB823C8A1CD7FDC6002964FF /* ViewController.swift in Sources */,
 				CB823C881CD7FDC6002964FF /* AppDelegate.swift in Sources */,
+				CB499C241CE4D87C006F9609 /* SpokenSnippet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
