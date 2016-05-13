@@ -16,8 +16,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var tableView: UITableView!
     
+    var key = "spokenText"
+    
     let speechSynthesizer = AVSpeechSynthesizer()
-    var spokenSnippets = [SpokenSnippet]()
+    var spokenSnippets = [String]()
     
     @IBAction func pressSpeak(sender: UIButton) {
         speak(textView!.text)
@@ -36,17 +38,41 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         speechSynthesizer.speakUtterance(speechUtterance)
         
         let snippet = textView!.text
-        if !spokenSnippets.contains({$0.text == snippet}) {
-            spokenSnippets.append(SpokenSnippet(snippet))
+        if !spokenSnippets.contains({$0 == snippet}) {
+            spokenSnippets.append(snippet)
             tableView.reloadData()
+            saveToUserDefaults()
+            
             if spokenSnippets.count > 20 {
                 spokenSnippets.removeFirst()
             }
         }
     }
     
+    func saveToUserDefaults() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject(spokenSnippets, forKey: key)
+        defaults.synchronize()
+    }
+    
+    func readFromUserDefaults() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if let array = defaults.objectForKey(key) {
+            spokenSnippets = array as! [String]
+        }
+    }
+    
     @IBAction func deleteText(sender: UIButton) {
         textView.text = nil
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        readFromUserDefaults()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        saveToUserDefaults()
+        speechSynthesizer.stopSpeakingAtBoundary(AVSpeechBoundary.Immediate)
     }
     
     override func viewDidLoad() {
@@ -57,6 +83,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
         
         textView.becomeFirstResponder()
+        readFromUserDefaults()
     }
     
     func keyboardWillShow(notification: NSNotification) {
@@ -78,14 +105,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell")!
-        cell.textLabel?.text = spokenSnippets[indexPath.row].text
+        cell.textLabel?.text = spokenSnippets[indexPath.row]
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let snippet = spokenSnippets[indexPath.row]
-        speak(snippet.text)
-        snippet.lastUsed = NSDate()
+        speak(snippet)
     }
 }
 
